@@ -4,3 +4,8 @@ import:
   version: ^2.1.0
   subpackages:
   - '...'
+- package: github.com/jinzhu/gorm
+  version: ^1.0.0
+  subpackages:
+  - dialects/postgres
+  - '...'

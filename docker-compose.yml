@@ -6,6 +6,10 @@ services:
     command: gin
     volumes:
       - .:/go/src/github.com/jvikstedt/jnotes/
+    environment:
+      - DATABASE_URL=postgres://jnotes:jnotes@db/jnotes?sslmode=disable
+    depends_on:
+     - db
   nginx:
     build: nginx
     ports:
@@ -13,3 +17,14 @@ services:
       - "444:443"
     depends_on:
       - api
+  db:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_USER=jnotes
+      - POSTGRES_PASSWORD=jnotes
+      - POSTGRES_DB=jnotes
+    volumes:
+      - jnotes_db_data:/var/lib/postgresql/data
+
+volumes:
+ jnotes_db_data:

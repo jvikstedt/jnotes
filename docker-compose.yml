@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  api:
+    build: .
+    command: gin
+    volumes:
+      - .:/go/src/github.com/jvikstedt/jnotes/
+  nginx:
+    build: nginx
+    ports:
+      - "80:80"
+      - "444:443"
+    depends_on:
+      - api

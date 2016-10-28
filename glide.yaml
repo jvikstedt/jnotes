@@ -1,0 +1,6 @@
+package: github.com/jvikstedt/jnotes
+import:
+- package: github.com/labstack/echo
+  version: ^2.1.0
+  subpackages:
+  - '...'

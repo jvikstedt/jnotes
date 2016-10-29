@@ -1,6 +1,10 @@
-hash: 79d69ce7d29ffbc4d884b509d32231d8f5ea92eb295be9e397a09b8543134a0c
-updated: 2016-10-28T22:44:04.222575814+03:00
+hash: 552b6afd201df9d5a0781c466bde384f7c5a8460ced7d906268b59f29416b724
+updated: 2016-10-29T20:31:02.993164748+03:00
 imports:
+- name: github.com/gorilla/context
+  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
+- name: github.com/gorilla/mux
+  version: 0eeaf8392f5b04950925b8a69fe70f110fa7cbfc
 - name: github.com/jinzhu/gorm
   version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
   subpackages:
@@ -8,36 +12,9 @@ imports:
   - dialects/postgres
 - name: github.com/jinzhu/inflection
   version: 74387dc39a75e970e7a3ae6a3386b5bd2e5c5cff
-- name: github.com/labstack/echo
-  version: 04e6901d05b58ddbae579a6252a3d1bb3f334adc
-  subpackages:
-  - '...'
-  - context
-  - engine
-  - engine/standard
-  - log
-- name: github.com/labstack/gommon
-  version: 2d272df536d051e737aea353b86c979d6e88bce0
-  subpackages:
-  - color
-  - log
 - name: github.com/lib/pq
   version: ae8357db35d721c58dcdc911318b55bef6b1b001
   subpackages:
   - hstore
   - oid
-- name: github.com/mattn/go-colorable
-  version: 6c903ff4aa50920ca86087a280590b36b3152b9c
-- name: github.com/mattn/go-isatty
-  version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
-- name: github.com/valyala/fasttemplate
-  version: 3b874956e03f1636d171bda64b130f9135f42cff
-- name: golang.org/x/net
-  version: b336a971b799939dd16ae9b1df8334cb8b977c4d
-  subpackages:
-  - context
-- name: golang.org/x/sys
-  version: c200b10b5d5e122be351b67af224adc6128af5bf
-  subpackages:
-  - unix
 testImports: []

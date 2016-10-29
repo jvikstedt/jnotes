@@ -2,13 +2,17 @@ package main
 
 import (
 	"fmt"
+	"github.com/gorilla/mux"
 	"github.com/jvikstedt/jnotes/database"
 	"github.com/jvikstedt/jnotes/repository"
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/engine/standard"
+	"log"
 	"net/http"
 	"os"
 )
+
+func TestHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Testing!\n"))
+}
 
 func main() {
 	port := os.Getenv("PORT")
@@ -32,14 +36,13 @@ func main() {
 	//fmt.Println(note)
 	//fmt.Println(err)
 
-	//note, err := noteRepository.DeleteByID(1)
-	//fmt.Println(note)
-	//fmt.Println(err)
+	note, err := noteRepository.DeleteByID(1)
+	fmt.Println(note)
+	fmt.Println(err)
 
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World! adsdsa")
-	})
-	e.Run(standard.New(":" + port))
+	r := mux.NewRouter()
+	r.HandleFunc("/", TestHandler)
+
+	log.Fatal(http.ListenAndServe(":"+port, r))
 	defer database.Shutdown()
 }

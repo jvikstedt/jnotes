@@ -14,6 +14,14 @@ type Note struct {
 	Body      string     `json:"body"`
 }
 
+type NoteParams struct {
+	Note
+	OmitID        interface{} `json:"id,omitempty"`
+	OmitCreatedAt interface{} `json:"created_at,omitempty"`
+	OmitUpdatedAt interface{} `json:"updated_at,omitempty"`
+	OmitDeletedAt interface{} `json:"deleted_at,omitempty"`
+}
+
 type NoteRepository interface {
 	Create(Note) (Note, error)
 	DeleteByID(int) (Note, error)

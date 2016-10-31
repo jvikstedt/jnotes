@@ -32,28 +32,24 @@ func (nc NoteController) BeforeFilter(next http.Handler) http.Handler {
 }
 
 func (nc NoteController) Create(w http.ResponseWriter, r *http.Request) {
-	note := jnotes.Note{}
 	defer r.Body.Close()
-	var data struct {
-		*jnotes.Note
-		OmitID interface{} `json:"id,omitempty"`
-	}
 
-	err := json.NewDecoder(r.Body).Decode(&data)
+	var noteParams jnotes.NoteParams
+	err := json.NewDecoder(r.Body).Decode(&noteParams)
 
 	if err != nil {
-		http.Error(w, http.StatusText(422), 422)
+		http.Error(w, http.StatusText(http.StatusUnprocessableEntity), http.StatusUnprocessableEntity)
 	}
-	note, err = nc.NoteRepository.Create(note)
+
+	note, err := nc.NoteRepository.Create(noteParams.Note)
+
 	if err != nil {
-		http.Error(w, err.Error(), 422)
+		http.Error(w, err.Error(), http.StatusUnprocessableEntity)
 	}
-	bytes, _ := json.Marshal(note)
-	w.Write(bytes)
+	RenderJSON(w, http.StatusCreated, note)
 }
 
 func (nc NoteController) Get(w http.ResponseWriter, r *http.Request) {
 	note := r.Context().Value("note").(jnotes.Note)
-	bytes, _ := json.Marshal(note)
-	w.Write(bytes)
+	RenderJSON(w, http.StatusOK, note)
 }

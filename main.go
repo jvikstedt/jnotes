@@ -21,11 +21,15 @@ func main() {
 	}
 	defer database.Shutdown()
 
+	router := router.Router{}
+
+	// Repositories
 	noteRepository := repository.NoteRepository{DB: database.DB}
 
-	noteController := controller.NoteController{NoteRepository: noteRepository}
+	// Controllers
+	noteController := controller.NoteController{NoteRepository: noteRepository, Router: router}
 
-	router := router.Router{NoteController: noteController}
+	router.NoteController = noteController
 
 	log.Fatal(http.ListenAndServe(":"+port, router.Handler()))
 }

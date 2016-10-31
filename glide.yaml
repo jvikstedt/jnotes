@@ -6,4 +6,4 @@ import:
   - dialects/postgres
   - '...'
 - package: github.com/pressly/chi
-  version: ^1.0.0
+  version: v2.0.0rc1

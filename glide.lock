@@ -1,5 +1,5 @@
-hash: 47f55a9512ea5cbc3ed8e98933021e974aba71a6221e1bd7a7740b6cdf685d78
-updated: 2016-10-31T11:18:52.153705758+02:00
+hash: 5f0baabdaa581d821701e331a64b3366e5799bf6d9a07fe201fb68b749cd387b
+updated: 2016-10-31T19:35:39.573503618+02:00
 imports:
 - name: github.com/jinzhu/gorm
   version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
@@ -14,7 +14,9 @@ imports:
   - hstore
   - oid
 - name: github.com/pressly/chi
-  version: 0c0be26887fc176249c3bbd069cb9f9f3f757ed5
+  version: fc6251083a856d5093f4b96d71252c5e56d9c1b5
+  subpackages:
+  - middleware
 - name: golang.org/x/net
   version: 4cfeeeb61ae8daa2a4b06572024786e56f23504c
   subpackages:

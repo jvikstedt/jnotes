@@ -23,5 +23,7 @@ type NoteRepository interface {
 }
 
 type NoteController interface {
+	BeforeFilter(next http.Handler) http.Handler
+	Get(w http.ResponseWriter, r *http.Request)
 	Create(w http.ResponseWriter, r *http.Request)
 }

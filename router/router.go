@@ -30,6 +30,7 @@ func (router Router) GetURLParameter(r *http.Request, key string) string {
 func (router Router) ApiV1() http.Handler {
 	r := chi.NewRouter()
 	r.Route("/notes", func(r chi.Router) {
+		r.Get("/", router.NoteController.GetAll)
 		r.Post("/", router.NoteController.Create)
 		r.Route("/:noteID", func(r chi.Router) {
 			r.Use(router.NoteController.BeforeFilter)

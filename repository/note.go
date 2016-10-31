@@ -38,3 +38,9 @@ func (nr NoteRepository) FindByID(id int) (jnotes.Note, error) {
 	r := nr.DB.First(&note, id)
 	return note, r.Error
 }
+
+func (nr NoteRepository) GetAll() ([]jnotes.Note, error) {
+	var notes []jnotes.Note
+	r := nr.DB.Find(&notes)
+	return notes, r.Error
+}

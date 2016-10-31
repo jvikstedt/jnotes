@@ -28,10 +28,12 @@ type NoteRepository interface {
 	Delete(Note) (Note, error)
 	Update(Note) (Note, error)
 	FindByID(int) (Note, error)
+	GetAll() ([]Note, error)
 }
 
 type NoteController interface {
 	BeforeFilter(next http.Handler) http.Handler
 	Get(w http.ResponseWriter, r *http.Request)
+	GetAll(w http.ResponseWriter, r *http.Request)
 	Create(w http.ResponseWriter, r *http.Request)
 }

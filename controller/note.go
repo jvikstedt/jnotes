@@ -53,3 +53,11 @@ func (nc NoteController) Get(w http.ResponseWriter, r *http.Request) {
 	note := r.Context().Value("note").(jnotes.Note)
 	RenderJSON(w, http.StatusOK, note)
 }
+
+func (nc NoteController) GetAll(w http.ResponseWriter, r *http.Request) {
+	notes, err := nc.NoteRepository.GetAll()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+	RenderJSON(w, http.StatusOK, notes)
+}

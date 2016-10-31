@@ -35,6 +35,8 @@ func (router Router) ApiV1() http.Handler {
 		r.Route("/:noteID", func(r chi.Router) {
 			r.Use(router.NoteController.BeforeFilter)
 			r.Get("/", router.NoteController.Get)
+			r.Delete("/", router.NoteController.Delete)
+			r.Patch("/", router.NoteController.Update)
 		})
 	})
 	return r

@@ -49,6 +49,34 @@ func (nc NoteController) Create(w http.ResponseWriter, r *http.Request) {
 	RenderJSON(w, http.StatusCreated, note)
 }
 
+func (nc NoteController) Update(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+	note := r.Context().Value("note").(jnotes.Note)
+
+	noteParams := jnotes.NoteParams{Note: note}
+	err := json.NewDecoder(r.Body).Decode(&noteParams)
+
+	if err != nil {
+		http.Error(w, http.StatusText(http.StatusUnprocessableEntity), http.StatusUnprocessableEntity)
+	}
+
+	note, err = nc.NoteRepository.Update(noteParams.Note)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusUnprocessableEntity)
+	}
+	RenderJSON(w, http.StatusCreated, note)
+}
+
+func (nc NoteController) Delete(w http.ResponseWriter, r *http.Request) {
+	note := r.Context().Value("note").(jnotes.Note)
+	note, err := nc.NoteRepository.Delete(note)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+	RenderJSON(w, http.StatusOK, note)
+}
+
 func (nc NoteController) Get(w http.ResponseWriter, r *http.Request) {
 	note := r.Context().Value("note").(jnotes.Note)
 	RenderJSON(w, http.StatusOK, note)

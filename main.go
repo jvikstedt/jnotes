@@ -1,18 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"github.com/gorilla/mux"
+	"github.com/jvikstedt/jnotes/controller"
 	"github.com/jvikstedt/jnotes/database"
 	"github.com/jvikstedt/jnotes/repository"
+	"github.com/jvikstedt/jnotes/router"
 	"log"
 	"net/http"
 	"os"
 )
-
-func TestHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Testing!\n"))
-}
 
 func main() {
 	port := os.Getenv("PORT")
@@ -23,26 +19,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer database.Shutdown()
 
 	noteRepository := repository.NoteRepository{DB: database.DB}
-	//note := jnotes.Note{Title: "I Love Golang", Body: "It's so good!"}
-	//note, err = noteRepository.Create(note)
 
-	//note, _ := noteRepository.FindByID(1)
-	//fmt.Println(note)
+	noteController := controller.NoteController{NoteRepository: noteRepository}
 
-	//note.Body = "It's awesome"
-	//note, err = noteRepository.Update(note)
-	//fmt.Println(note)
-	//fmt.Println(err)
+	router := router.Router{NoteController: noteController}
 
-	note, err := noteRepository.DeleteByID(1)
-	fmt.Println(note)
-	fmt.Println(err)
-
-	r := mux.NewRouter()
-	r.HandleFunc("/", TestHandler)
-
-	log.Fatal(http.ListenAndServe(":"+port, r))
-	defer database.Shutdown()
+	log.Fatal(http.ListenAndServe(":"+port, router.Handler()))
 }

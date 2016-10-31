@@ -1,10 +1,6 @@
-hash: 552b6afd201df9d5a0781c466bde384f7c5a8460ced7d906268b59f29416b724
-updated: 2016-10-29T20:31:02.993164748+03:00
+hash: 47f55a9512ea5cbc3ed8e98933021e974aba71a6221e1bd7a7740b6cdf685d78
+updated: 2016-10-31T11:18:52.153705758+02:00
 imports:
-- name: github.com/gorilla/context
-  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
-- name: github.com/gorilla/mux
-  version: 0eeaf8392f5b04950925b8a69fe70f110fa7cbfc
 - name: github.com/jinzhu/gorm
   version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
   subpackages:
@@ -17,4 +13,10 @@ imports:
   subpackages:
   - hstore
   - oid
+- name: github.com/pressly/chi
+  version: 0c0be26887fc176249c3bbd069cb9f9f3f757ed5
+- name: golang.org/x/net
+  version: 4cfeeeb61ae8daa2a4b06572024786e56f23504c
+  subpackages:
+  - context
 testImports: []

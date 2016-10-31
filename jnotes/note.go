@@ -1,6 +1,9 @@
 package jnotes
 
-import "time"
+import (
+	"net/http"
+	"time"
+)
 
 type Note struct {
 	ID        uint       `gorm:"primary_key",json:"id"`
@@ -17,4 +20,8 @@ type NoteRepository interface {
 	Delete(Note) (Note, error)
 	Update(Note) (Note, error)
 	FindByID(int) (Note, error)
+}
+
+type NoteController interface {
+	Create(w http.ResponseWriter, r *http.Request)
 }

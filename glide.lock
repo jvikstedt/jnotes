@@ -1,24 +1,16 @@
-hash: 5f0baabdaa581d821701e331a64b3366e5799bf6d9a07fe201fb68b749cd387b
-updated: 2016-10-31T19:35:39.573503618+02:00
+hash: bfc9468670b6d4af49dbf078e41c04fab8583cfbab8fdf958ad28c1af8ae5bed
+updated: 2016-11-01T18:38:33.05616763+02:00
 imports:
-- name: github.com/jinzhu/gorm
-  version: 5174cc5c242a728b435ea2be8a2f7f998e15429b
+- name: github.com/jmoiron/sqlx
+  version: 5f97679e23f75f42b265fec8d3bdb1c8de90b79d
   subpackages:
-  - '...'
-  - dialects/postgres
-- name: github.com/jinzhu/inflection
-  version: 74387dc39a75e970e7a3ae6a3386b5bd2e5c5cff
+  - reflectx
 - name: github.com/lib/pq
   version: ae8357db35d721c58dcdc911318b55bef6b1b001
   subpackages:
-  - hstore
   - oid
 - name: github.com/pressly/chi
   version: fc6251083a856d5093f4b96d71252c5e56d9c1b5
   subpackages:
   - middleware
-- name: golang.org/x/net
-  version: 4cfeeeb61ae8daa2a4b06572024786e56f23504c
-  subpackages:
-  - context
 testImports: []

@@ -6,12 +6,11 @@ import (
 )
 
 type Note struct {
-	ID        uint       `gorm:"primary_key",json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt time.Time  `json:"updated_at"`
-	DeletedAt *time.Time `json:"deleted_at"`
-	Title     string     `json:"title"`
-	Body      string     `json:"body"`
+	ID        uint      `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	Title     string    `json:"title"`
+	Body      string    `json:"body"`
 }
 
 type NoteParams struct {
@@ -19,7 +18,6 @@ type NoteParams struct {
 	OmitID        interface{} `json:"id,omitempty"`
 	OmitCreatedAt interface{} `json:"created_at,omitempty"`
 	OmitUpdatedAt interface{} `json:"updated_at,omitempty"`
-	OmitDeletedAt interface{} `json:"deleted_at,omitempty"`
 }
 
 type NoteRepository interface {

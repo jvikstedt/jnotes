@@ -1,9 +1,6 @@
 package: github.com/jvikstedt/jnotes
 import:
-- package: github.com/jinzhu/gorm
-  version: ^1.0.0
-  subpackages:
-  - dialects/postgres
-  - '...'
 - package: github.com/pressly/chi
   version: v2.0.0rc1
+- package: github.com/lib/pq
+- package: github.com/jmoiron/sqlx

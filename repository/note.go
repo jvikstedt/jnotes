@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"fmt"
+
 	"github.com/jmoiron/sqlx"
 	"github.com/jvikstedt/jnotes/jnotes"
 )
@@ -10,6 +12,7 @@ type NoteRepository struct {
 }
 
 func (nr NoteRepository) Create(note jnotes.Note) (jnotes.Note, error) {
+	fmt.Println(note)
 	rows, err := nr.DB.NamedQuery(`INSERT INTO notes (title,body,createdAt) VALUES (:title,:body,CURRENT_TIMESTAMP) RETURNING *`, note)
 	if rows.Next() {
 		err = rows.StructScan(&note)

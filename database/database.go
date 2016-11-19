@@ -37,3 +37,11 @@ func (database *Database) Shutdown() {
 func (database *Database) CreateTables() {
 	database.DB.MustExec(schema)
 }
+
+func (database *Database) RecreateTables() {
+	database.DB.MustExec(`
+		DROP SCHEMA public CASCADE;
+		CREATE SCHEMA public;
+	`)
+	database.CreateTables()
+}

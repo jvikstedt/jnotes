@@ -65,7 +65,7 @@ func (nc NoteController) Update(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusUnprocessableEntity)
 	}
-	RenderJSON(w, http.StatusCreated, note)
+	RenderJSON(w, http.StatusOK, note)
 }
 
 func (nc NoteController) Delete(w http.ResponseWriter, r *http.Request) {

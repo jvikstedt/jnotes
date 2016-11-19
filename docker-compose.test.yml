@@ -3,13 +3,17 @@ version: '2'
 services:
   api:
     build: .
-    command: ./run_tests.sh
+    command: gin
     volumes:
       - .:/go/src/github.com/jvikstedt/jnotes/
     environment:
       - DATABASE_URL=postgres://jnotes:jnotes@db/jnotes?sslmode=disable
     depends_on:
      - db
+  nginx:
+    build: nginx
+    depends_on:
+      - api
   db:
     image: postgres:9.4
     environment:
